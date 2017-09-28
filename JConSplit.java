@@ -15,14 +15,14 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Arrays;
-public class JConSplit
+public class Main
 {
    //This is where the magic happens!
    //TODO: Split the code up into separate methods if possible.
    //TODO: Use the correct exceptions!
    public static void main(String[] args) throws Exception
    {
-       int c = 0;
+       int currentByte = 0;
        int counter = 0;
        int counterToo = 0;
        int index = 0;
@@ -39,7 +39,7 @@ public class JConSplit
        //The time the process was completed.
        long timeEnd = 0;
        
-       ArrayList<Integer> patter2 = new ArrayList<>();
+       ArrayList<Integer> pattern2 = new ArrayList<>();
        int[] pattern;
        int[] inputThing;
        
@@ -79,8 +79,8 @@ public class JConSplit
        System.out.println("DAMAGE THIS SOFTWARE MAY CAUSE! USE IT AT YOUR OWN RISK!");
        System.out.println("\n-----Concatenated File Splitter (EXPERIMENTAL)-----\n");
        
-       //Ask the user for magic numbers and store the input in the ArrayList, patter2.
-       askMagicNumbers(patter2);
+       //Ask the user for magic numbers and store the input in the ArrayList, pattern2.
+       askMagicNumbers(pattern2);
        
        //Ask the user for an input filename.
        inFileName = askInFile();
@@ -100,11 +100,11 @@ public class JConSplit
        bufferThing = new BufferedInputStream(originalFile, 1024*1024*32);
        bufferTwo = new BufferedInputStream(twoFile, 1024*1024*32);
        //Make an array for storing the pattern that was given earlier.
-       pattern = new int[patter2.size()];
-       //Copy everything from "patter2" into the pattern array.
+       pattern = new int[pattern2.size()];
+       //Copy everything from "pattern2" into the pattern array.
        for(int i = 0; i < pattern.length; i++)
        {
-           pattern[i] = patter2.get(i);
+           pattern[i] = pattern2.get(i);
        }
        //This array holds the current portion of the file being scanned.
        //As the file is scanned, the first byte is removed from the array and
@@ -137,11 +137,11 @@ public class JConSplit
                }
            }
            //Get the next byte from the file.
-           c = bufferThing.read();
+           currentByte = bufferThing.read();
            //The buffered stream will put out -1 if the are no more bytes to read.
            //We know we have reached the end of the file at this point. Now things
            //just need to be wrapped up.
-           if (c == -1)
+           if (currentByte == -1)
            {
         	   //If the magic bytes occurred at least once, copy the very last concatenated
         	   //file and tell the user that the process has finished.
@@ -173,11 +173,11 @@ public class JConSplit
                }
            }
            //Keep running if there is more data to read.
-           if (c != -1)
+           if (currentByte != -1)
            {
         	   //Put the value of the current byte into the array at the current index.
         	   //The index starts at zero.
-               inputThing[index] = c;
+               inputThing[index] = currentByte;
                //Count the number of bytes read.
                bytesRead++;
                //If the index is less than or equal to the array's length -1, increment.
@@ -195,13 +195,13 @@ public class JConSplit
                        counter++;
                        //Mark the starting point for each file at the beginning of each occurrence
                        //of the magic bytes inside the input file.
-                       startPoints.add(bytesRead - 4);
+                       startPoints.add(bytesRead - inputThing.length);
                        //If more than one starting point was found, throw in some more operations.
                        if(startPoints.size() > 1)
                        {
                     	   //If another occurrence of the magic bytes is found, mark an end point for
                     	   //the previous concatenated file that was found.
-                           endPoints.add(bytesRead - 5);
+                           endPoints.add(bytesRead - inputThing.length - 1);
                            //Generate a new file.
                            newFile = new FileOutputStream(outFileName + counterToo + "." + outFileExtension);
                            //Prepare a buffered output stream for the new file.
@@ -231,10 +231,10 @@ public class JConSplit
                    }
                    //Set the index to the end of the array, since we need to put a new byte
                    //into the last index.
-                   index = 3;
+                   index = inputThing.length - 1;
                }
            }
-       } while (c != -1);
+       } while (currentByte != -1);
        
        //Get the current time in milliseconds after the above processes finish.
        //The time between the process starting and stopping will be displayed later.
@@ -415,13 +415,13 @@ public class JConSplit
        //Skip to the point in the stream we're interested in reading.
        streamer.skip(start);
        //This integer is the value of the current byte in the BufferedInputStream
-       int c = 0;
+       int currentByte = 0;
        //Run as long as there is still data to be read or until the end of the range.
-       while(((c = streamer.read()) != -1) && (currentPos <= end))
+       while(((currentByte = streamer.read()) != -1) && (currentPos <= end))
        {
            if (currentPos >= start)
            {
-               output.write(c);
+               output.write(currentByte);
            }
            currentPos++;
        }
@@ -466,9 +466,9 @@ public class JConSplit
         for (int i = 0; i < s.length(); i++)
         {
         	//Get the character at index i of the input string.
-            char c = s.charAt(i);
+            char currentByte = s.charAt(i);
             //Get the index of the current character in digits.
-            int d = digits.indexOf(c);
+            int d = digits.indexOf(currentByte);
             //In the case there are multiple digits, multiply the previous result
             //by 16 before adding the current digit. This makes a lot more sense
             //when you try it on paper!

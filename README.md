@@ -6,8 +6,6 @@ General description:
 
 This Java project splits files based on occurrences of a pattern specified by the user.
 
-Originally, the method of splitting was to find all ocurrences of a pattern and output split files at the same time. After some experimenting, however, it turned out that it was better and **faster** to handle this process with two passes. The first pass simply finds ocurrences of a given pattern, while the second pass splits the input into individual files.
-
 To do:
 1. Add detailed documentation.
 2. Clean up the code!

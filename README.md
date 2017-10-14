@@ -10,7 +10,8 @@ Originally, the method of splitting was to find all ocurrences of a pattern and 
 
 To do:
 1. Add detailed documentation.
-2. Clean up the code!
+2a. Clean up the code!
+2b. Replace the original pattern matching code with riversrun's bigdoc library! https://github.com/riversun/bigdoc
 3. ~~Add support for different lengths of hex patterns. (Only 16 byte patterns currently supported due to a bug that I am investigating.)~~ Done!
 4. ~~Add support for splitting based on lengths instead of patterns as well. (Just trying to be thorough here!)~~
 5. ~~Add support for concatenation.~~ Number 4 and 5 are probably not happening.

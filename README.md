@@ -1,7 +1,5 @@
 # JConSplit
 
-After a bit of a haitus due to school and just generally being busy, I'm back! ~Argonitious
-
 General description:
 
 This Java project splits files based on occurrences of a pattern specified by the user.

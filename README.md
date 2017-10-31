@@ -5,6 +5,7 @@ General description:
 This Java project splits files based on occurrences of a pattern specified by the user.
 
 News:
+
 This project is now proudly using riversun's bigdoc library! See the library at https://github.com/riversun/bigdoc
 
 To do:

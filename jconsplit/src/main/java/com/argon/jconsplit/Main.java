@@ -12,7 +12,7 @@ public class Main
    public static void main(String[] args) throws Exception
    {
        System.out.println("JConSplit ~ The Concatenated File Splitter for Java");
-       System.out.println("----------------------Alpha 1----------------------\n");
+       System.out.println("----------------------Alpha 2----------------------\n");
        
        String inFileName = askInFile();
        String outFileName = askOutFileName();

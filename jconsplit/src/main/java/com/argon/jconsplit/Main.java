@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 /**
  *
- * @author Argonitious
+ * @author Blazin64
  */
 public class Main
 {

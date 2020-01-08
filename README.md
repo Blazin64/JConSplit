@@ -1,6 +1,11 @@
 # JConSplit
+This interactive CLI Java utility splits concatenated data based on occurrences of a hexadecimal pattern specified by the user. JConSplit uses riversun's bigdoc library, found at https://github.com/riversun/bigdoc.
 
-This Java tool splits files based on occurrences of a pattern specified by the user. Based on riversun's bigdoc library at https://github.com/riversun/bigdoc.
+### Compiling
+Maven was used primarily for handling dependencies. If you use the Eclipse IDE, you can simply import this as a Maven project. Eclipse should take care of the rest for you. Use your IDE's compile button to create a usable jar file.
 
-To do:
+### Usage
+JConSplit is interactive, so run your compiled jar file with `java -jar jconsplit.jar` and the prompts that appear will guide you through the necessary steps. It will ask you for an input file name, a base name for output files, an extension to use for output files, and the magic bytes that mark the beginning of each data stream. The output files names will use your base name with a number and your chosen file extension appended. The output file names will look something like `base123.abc`.
+
+### To do
 * Improve error handling. (Mostly applies to output filename entry.)

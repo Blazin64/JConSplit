@@ -1,7 +1,7 @@
 package com.argon.jconsplit;
 /**
  *
- * @author Argonitious
+ * @author Blazin64
  */
 public class RunningIndicator extends Thread
 {

@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.util.List;
 import java.util.ArrayList;
 /**
- * @author Argonitious
+ * @author Blazin64
  */
 public class Splitter {
     public static void split(String inFileName, String outFileName, String outFileExtension, byte[] searchBytes) throws InterruptedException, Exception

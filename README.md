@@ -1,6 +1,8 @@
 # JConSplit
 This interactive CLI Java utility splits concatenated data based on occurrences of a hexadecimal pattern specified by the user. JConSplit uses riversun's bigdoc library, found at https://github.com/riversun/bigdoc.
 
+Note: Please use the [GitLab repository](https://gitlab.com/Blazin64/JConSplit). The [GitHub repository](https://github.com/Blazin64/JConSplit) is only a mirror.
+
 ### Compiling
 Maven was used primarily for handling dependencies. If you use the Eclipse IDE, you can simply import this as a Maven project. Eclipse should take care of the rest for you. Use your IDE's compile button to create a usable jar file.
 
